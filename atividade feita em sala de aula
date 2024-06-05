@@ -1,0 +1,44 @@
+// Velocidade média = (variação de espaço) / (variação de tempo)
+// Entre o calculo da variação de espaço e tempo desalocar a memória para otimização do algoritmo.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    
+  float distanciaInicial, distanciaFinal, tempoInicial, tempoFinal, velocidadeMedia;
+  float *pDistanciaInicial, *pDistanciaFinal, *pTempoInicial, *pTempoFinal;
+
+  // p= indicando o ponteiro
+  pDistanciaInicial = (float*) malloc(sizeof(float));
+  pDistanciaFinal = (float*) malloc(sizeof(float));
+  pTempoInicial = (float*) malloc(sizeof(float));
+  pTempoFinal = (float*) malloc(sizeof(float));
+
+  printf("Digite a distância inicial: ");
+  scanf("%f", pDistanciaInicial);
+
+  printf("Digite a distância final: ");
+  scanf("%f", pDistanciaFinal);
+
+  printf("Digite o tempo inicial: ");
+  scanf("%f", pTempoInicial);
+
+  printf("Digite o tempo final: ");
+  scanf("%f", pTempoFinal);
+
+  float variacaoDistancia = *pDistanciaFinal - *pDistanciaInicial;
+  float variacaoTempo = *pTempoFinal - *pTempoInicial;
+
+  //  free= desalocar memória que foi previamente alocada dinamicamente
+  free(pDistanciaInicial);
+  free(pDistanciaFinal);
+  free(pTempoInicial);
+  free(pTempoFinal);
+
+  velocidadeMedia = variacaoDistancia / variacaoTempo;
+  
+  printf("A velocidade média é de: %.2f\n", velocidadeMedia);
+
+  return 0;
+}
